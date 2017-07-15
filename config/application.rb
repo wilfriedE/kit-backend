@@ -1,5 +1,6 @@
 require_relative 'boot'
 
+require 'rack/cors'
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -14,5 +15,13 @@ module Kit
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any,
+        :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+        :methods => [:get, :post, :options, :delete, :put]
+      end
+    end
   end
 end
