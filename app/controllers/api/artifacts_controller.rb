@@ -41,6 +41,7 @@ class Api::ArtifactsController < ApplicationController
     fields = {}
     fields.update(name: params[:name]) if params[:name]
     fields.update(condition: params[:condition]) if params[:condition]
+    fields.update(cause_id: params[:cause_id]) if params[:cause_id]
     fields.update(user: api_user)
     fields
   end
