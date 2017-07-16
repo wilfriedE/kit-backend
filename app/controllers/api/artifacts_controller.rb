@@ -1,5 +1,4 @@
 class Api::ArtifactsController < ApplicationController
-  before_action :authenticate_user!
 
   def index
     render json: Artifact.all
@@ -29,6 +28,10 @@ class Api::ArtifactsController < ApplicationController
 
   private
 
+  def api_user
+    return User.find(params[:user_id]) if params[:id]
+  end
+
   def artifact
     return Artifact.find(params[:id]) if params[:id]
     {}
@@ -38,7 +41,7 @@ class Api::ArtifactsController < ApplicationController
     fields = {}
     fields.update(name: params[:name]) if params[:name]
     fields.update(condition: params[:condition]) if params[:condition]
-    fields.update(user: current_user)
+    fields.update(user: api_user)
     fields
   end
 
