@@ -36,7 +36,7 @@ Rails.application.routes.draw do
       end
 
       member do
-        post 'bid/:user_id' => 'artifacts#bid'
+        post 'bid/:user_id' => 'artifacts#bid_show'
         post 'bid/:bid_id/approve' => 'artifacts#bid_approval'
       end
     end

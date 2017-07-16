@@ -1,6 +1,6 @@
 class Api::ArtifactsController < ApplicationController
 
-  def bid
+  def bid_show
     return failure_resp unless perform_bid
   end
 
