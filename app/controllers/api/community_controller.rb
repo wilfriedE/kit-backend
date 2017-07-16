@@ -4,6 +4,10 @@ class Api::CommunityController < ApplicationController
     render json: community_artifacts
   end
 
+  def causes
+    render json: community_causes
+  end
+
   def index
     render json: Community.all
   end
@@ -25,6 +29,10 @@ class Api::CommunityController < ApplicationController
 
   def community_artifacts
     community.artifacts
+  end
+
+  def community_causes
+    community.causes
   end
 
   def search_for_communities

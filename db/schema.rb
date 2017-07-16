@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170716041842) do
+ActiveRecord::Schema.define(version: 20170716050035) do
 
   create_table "artifacts", force: :cascade do |t|
     t.string "name"
@@ -18,7 +18,18 @@ ActiveRecord::Schema.define(version: 20170716041842) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "cause_id"
+    t.index ["cause_id"], name: "index_artifacts_on_cause_id"
     t.index ["user_id"], name: "index_artifacts_on_user_id"
+  end
+
+  create_table "causes", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "community_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["community_id"], name: "index_causes_on_community_id"
   end
 
   create_table "communities", force: :cascade do |t|

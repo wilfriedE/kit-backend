@@ -14,8 +14,11 @@ Rails.application.routes.draw do
 
       member do
         get 'artifacts' => 'community#artifacts'
+        get 'causes' => 'community#causes'
       end
     end
+
+    resources :causes, only: [:show] 
 
     resources :artifacts, only: [:index, :show, :create, :update, :destroy] do
       collection do
