@@ -16,7 +16,7 @@ class Artifact < ApplicationRecord
       h = super(options)
       h[:community] = community
       h[:bids] = bids
-      h[:cause] = cause
+      h[:image_url] = image_url || "http://lorempixel.com/50/50/cats/"
       h
   end
 end
