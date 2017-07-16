@@ -8,10 +8,15 @@ class Artifact < ApplicationRecord
     user.community
   end
 
+  def cause
+    return Cause.find(cause_id) if cause_id
+  end
+
   def as_json(options = { })
       h = super(options)
       h[:community] = community
       h[:bids] = bids
+      h[:cause] = cause
       h
   end
 end
