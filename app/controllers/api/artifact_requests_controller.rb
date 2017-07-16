@@ -55,7 +55,7 @@ class Api::ArtifactRequestsController < ApplicationController
 
     def update_artifact_request
       artifact_request.update!(artifact_attrs)
-      success_resp('Artifact succesfully updated', artifact)
+      success_resp('Artifact Request succesfully updated', artifact_request)
     end
 
 end
