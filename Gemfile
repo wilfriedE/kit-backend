@@ -35,8 +35,8 @@ gem 'omniauth'
 gem 'devise'
 gem 'devise_token_auth'
 
-# Allow cross origin requests
-gem 'rack-cors', :require => 'rack/cors'
+# Manage cross origin requests
+gem 'rack-cors'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
