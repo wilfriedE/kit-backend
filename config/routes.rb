@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
 
     resources :users, only: [:show]  do
+      collection do
+        get 'artifacts'  => 'artifacts#user_artifacts'
+      end
+
       member do
         resources :artifact_requests, only: [:index, :show, :create, :update, :destroy]
       end
@@ -33,6 +37,7 @@ Rails.application.routes.draw do
 
       member do
         post 'bid/:user_id' => 'artifacts#bid'
+        post 'bid/:bid_id/approve' => 'artifacts#bid_approval'
       end
     end
   end

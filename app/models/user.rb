@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   belongs_to :community
   has_many :artifacts
   has_many :bids
+
 end

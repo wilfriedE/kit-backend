@@ -4,6 +4,11 @@ class Api::ArtifactsController < ApplicationController
     return failure_resp unless perform_bid
   end
 
+  def bid_approval
+    return failure_resp unless bid.present?
+    approve_bid
+  end
+
   def index
     render json: Artifact.all
   end
@@ -18,6 +23,10 @@ class Api::ArtifactsController < ApplicationController
 
   def show
     render json: artifact
+  end
+
+  def user_artifacts
+    render json: api_user.artifacts
   end
 
   def update
@@ -44,6 +53,21 @@ class Api::ArtifactsController < ApplicationController
     fields.update(cause_id: params[:cause_id]) if params[:cause_id]
     fields.update(user: api_user)
     fields
+  end
+
+  def bid
+    return Bid.find(params[:bid_id]) if params[:bid_id]
+    {}
+  end
+
+  def approve_bid
+    bid.update!({approved: true})
+
+    artifact.bids.each do |b|
+      bid.destroy! unless b == bid
+    end
+    artifact.update!({reserved: true})
+    return success_resp('Artifact succesfully reserved', artifact)
   end
 
   def bid_attrs

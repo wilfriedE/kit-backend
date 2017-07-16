@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170716094538) do
+ActiveRecord::Schema.define(version: 20170716155402) do
 
   create_table "artifact_requests", force: :cascade do |t|
     t.string "name"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170716094538) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "cause_id"
+    t.boolean "reserved"
     t.index ["cause_id"], name: "index_artifacts_on_cause_id"
     t.index ["user_id"], name: "index_artifacts_on_user_id"
   end
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 20170716094538) do
     t.string "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "approved"
     t.index ["artifact_id"], name: "index_bids_on_artifact_id"
     t.index ["user_id"], name: "index_bids_on_user_id"
   end
