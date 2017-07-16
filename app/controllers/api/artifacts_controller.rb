@@ -90,7 +90,11 @@ class Api::ArtifactsController < ApplicationController
   end
 
   def perform_bid
-    return success_resp if Bid.new(bid_attrs).save!
+    if Bid.find(user: api_user, artifact: artifact).count > 0
+      return success_resp if Bid.find(user: api_user, artifact: artifact).last.update!(bid_attrs)
+    else
+      return success_resp if Bid.new(bid_attrs).save!
+    end
   end
 
   def update_artifact
