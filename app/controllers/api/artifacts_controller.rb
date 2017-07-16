@@ -59,6 +59,6 @@ class Api::ArtifactsController < ApplicationController
   end
 
   def search_for_artifacts
-    Artifact.where('name like ? ', params[:name])
+    Artifact.where("name like ?", "%#{params[:name]}%")
   end
 end
