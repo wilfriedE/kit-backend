@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
   end
 
   def api_user
-    return User.find(params[:user_id]) if params[:id]
+    return User.find(params[:user_id]) if params[:user_id]
   end
 end

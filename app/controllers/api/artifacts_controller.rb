@@ -34,10 +34,9 @@ class Api::ArtifactsController < ApplicationController
   end
 
   def artifact_attrs
-    artifact_params = params[:artifact]
     fields = {}
-    fields.update(name: artifact_params[:name]) if artifact_params[:name]
-    fields.update(condition: artifact_params[:condition]) if artifact_params[:condition]
+    fields.update(name: params[:name]) if params[:name]
+    fields.update(condition: params[:condition]) if params[:condition]
     fields.update(user: api_user)
     fields
   end
