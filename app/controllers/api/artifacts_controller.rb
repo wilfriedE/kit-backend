@@ -28,10 +28,6 @@ class Api::ArtifactsController < ApplicationController
 
   private
 
-  def api_user
-    return User.find(params[:user_id]) if params[:id]
-  end
-
   def artifact
     return Artifact.find(params[:id]) if params[:id]
     {}
