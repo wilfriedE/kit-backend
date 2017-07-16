@@ -1,5 +1,9 @@
 class Api::ArtifactsController < ApplicationController
 
+  def bid
+    return failure_resp unless perform_bid
+  end
+
   def index
     render json: Artifact.all
   end
@@ -41,6 +45,12 @@ class Api::ArtifactsController < ApplicationController
     fields
   end
 
+  def bid_attrs
+    fields = {user: api_user, artifact: artifact}
+    fields.update(price: params[:price]) if params[:price]
+    fields
+  end
+
   def create_artifact
     item = Artifact.new(artifact_attrs)
     item.save!
@@ -52,6 +62,10 @@ class Api::ArtifactsController < ApplicationController
   def destroy_artifact
     artifact.destroy!
     return success_resp
+  end
+
+  def perform_bid
+    return success_resp if Bid.new(bid_attrs).save!
   end
 
   def update_artifact

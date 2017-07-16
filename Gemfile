@@ -35,6 +35,8 @@ gem 'omniauth'
 gem 'devise'
 gem 'devise_token_auth'
 
+gem 'geocoder'
+
 # Manage cross origin requests
 gem 'rack-cors'
 

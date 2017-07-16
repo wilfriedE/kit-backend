@@ -30,6 +30,10 @@ Rails.application.routes.draw do
       collection do
         get 'search' => 'artifacts#search'
       end
+
+      member do
+        post 'bid/:user_id' => 'artifacts#bid'
+      end
     end
   end
 end

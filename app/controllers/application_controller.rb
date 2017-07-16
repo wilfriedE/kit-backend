@@ -5,11 +5,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
 
-  def success_resp(message='Invalid request', obj={})
+  def success_resp(message='Valid request', obj={})
     render json: { status: 'success', message: message, obj: obj}
   end
 
-  def failure_resp(message='', obj={})
+  def failure_resp(message='Invalid request', obj={})
     render json: { status: 'failure', message: message, obj: obj}
   end
 

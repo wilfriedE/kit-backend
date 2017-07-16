@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170716062404) do
+ActiveRecord::Schema.define(version: 20170716094538) do
 
   create_table "artifact_requests", force: :cascade do |t|
     t.string "name"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20170716062404) do
     t.index ["user_id"], name: "index_artifacts_on_user_id"
   end
 
+  create_table "bids", force: :cascade do |t|
+    t.integer "artifact_id"
+    t.integer "user_id"
+    t.string "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artifact_id"], name: "index_bids_on_artifact_id"
+    t.index ["user_id"], name: "index_bids_on_user_id"
+  end
+
   create_table "causes", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -46,6 +56,8 @@ ActiveRecord::Schema.define(version: 20170716062404) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "users", force: :cascade do |t|
