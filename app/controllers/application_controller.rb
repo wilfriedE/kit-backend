@@ -22,6 +22,5 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
      permitted_parameters = devise_parameter_sanitizer.instance_values['permitted']
      permitted_parameters[:sign_up] << :community_id
-     permitted_parameters[:account_update] << :community_id
    end
 end
