@@ -16,7 +16,7 @@ class Artifact < ApplicationRecord
       h = super(options)
       h[:community] = community
       h[:bids] = bids
-      h[:image_url] = "http://lorempixel.com/100/100/cats/" unless image_url
+      h[:image_url] = "http://lorempixel.com/300/300/cats/" unless image_url
       h
   end
 end
